@@ -17,5 +17,6 @@ In this project, a large database with over a million rows is explored by buildi
 #### View
 ``` CREATE VIEW dailyErrors AS SELECT daily_log.date, round(daily_error.error_request * 100.0 / daily_log.total_request, 2) AS error_log FROM ( select time::date AS date, count(*) AS total_request FROM log GROUP BY date ) AS daily_log join ( select time::date as date, count(*) as error_request from log where status != '200 OK' group by date ) as daily_error on daily_log.date = daily_error.date; ```
 
+--- 
 
 Resources/help have been used in this project including Udacity FSND Nanodegree Program and also the Udacity FSND Program's Forum.
